@@ -3,36 +3,165 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 50px;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 60px;
+  /* Smaller height for the top bar */
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  padding: 0 20px;
   color: white;
 }
 
-.App-link {
+.App-header-text {
+  padding: 0 20px;
+  font-size: 1.5rem;
+  /* Smaller font size for the text */
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-content {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.Add-button,
+.Edit-button,
+.Delete-button,
+.More-button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.Add-button {
+  background-color: green;
+  box-shadow: 0 0 10px green;
+}
+
+.Add-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 0 20px green;
+}
+
+.Edit-button {
+  background-color: yellow;
+  color: black;
+  box-shadow: 0 0 10px yellow;
+}
+
+.Edit-button:hover {
+  background-color: #ffeb3b;
+  box-shadow: 0 0 20px yellow;
+}
+
+.Delete-button {
+  background-color: red;
+  box-shadow: 0 0 10px red;
+}
+
+.Delete-button:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 0 20px red;
+}
+
+/* Add glossy effect */
+.Add-button,
+.Edit-button,
+.Delete-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.Add-button::after,
+.Edit-button::after,
+.Delete-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.Add-button:hover::after,
+.Edit-button:hover::after,
+.Delete-button:hover::after {
+  opacity: 1;
+}
+
+.More-button {
+  background-color: blue;
+  box-shadow: 0 0 10px blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.More-button:hover {
+  background-color: #1e90ff;
+  box-shadow: 0 0 20px blue;
+}
+
+/* Translucent overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
 }

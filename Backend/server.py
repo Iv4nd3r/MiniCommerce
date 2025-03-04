@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from dotenv import load_dotenv
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
@@ -10,6 +11,9 @@ load_dotenv()
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 db = SQLAlchemy(app)
+
+# Set CORS policy
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 class Transactions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,7 +24,7 @@ class Transactions(db.Model):
     status = db.Column(db.Integer, db.ForeignKey('status.id'))
     transactionDate = db.Column(db.DateTime)
     createBy = db.Column(db.String(255))
-    createOn = db.Column(db.DateTime)
+    createOn = db.Column(db.DateTime, default=datetime.utcnow)  # Automatically add timestamp
 
 class Status(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -53,8 +57,7 @@ def add_transactions():
         customerName=data['customerName'],
         status=data['status'],
         transactionDate=datetime.strptime(data['transactionDate'], '%Y-%m-%d %H:%M:%S'),
-        createBy=data['createBy'],
-        createOn=datetime.strptime(data['createOn'], '%Y-%m-%d %H:%M:%S')
+        createBy=data['createBy']
     )
     db.session.add(new_transaction)
     db.session.commit()
@@ -73,7 +76,6 @@ def edit_transaction(id):
     transaction.status = data['status']
     transaction.transactionDate = datetime.strptime(data['transactionDate'], '%Y-%m-%d %H:%M:%S')
     transaction.createBy = data['createBy']
-    transaction.createOn = datetime.strptime(data['createOn'], '%Y-%m-%d %H:%M:%S')
     db.session.commit()
     return jsonify({'message': 'Transaction updated successfully'})
 
@@ -95,11 +97,11 @@ def get_transactions():
         }
         output.append(transaction_data)
 
-        status = Status.query.all()
-        status_data = []
-        for status in status:
-            status_data.append({'id': status.id, 'name': status.name})
-        return jsonify({'data': output, 'status': status_data})
+    status = Status.query.all()
+    status_data = []
+    for status in status:
+        status_data.append({'id': status.id, 'name': status.name})
+    return jsonify({'data': output, 'status': status_data})
 
 if __name__ == '__main__':
     app.run(debug=True)
