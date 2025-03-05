@@ -8,9 +8,9 @@ Commerce
 
 Welcome to MiniCommerce! This is a simple e-commerce data management web application built with React and Python. It allows ecommerce companies to easily manage and track users purchases.
 
-## Introduction video
+## Introduction and short demo video
 
-[![MiniCommerce Introduction](https://img.youtube.com/vi/1Q1Q1Q1Q1Q1/0.jpg)](https://www.youtube.com/watch?v=1Q1Q1Q1Q1Q1)
+[![MiniCommerce Introduction](https://i9.ytimg.com/vi/BEFL-Ew1svw/mqdefault.jpg?sqp=CLS4nr4G-oaymwEmCMACELQB8quKqQMa8AEB-AGeBoACwgOKAgwIABABGFkgWShZMA8=&rs=AOn4CLBPhDnPpGld7w2AGc31KceZt-RuPQ)](https://youtu.be/BEFL-Ew1svw)
 
 ## Features
 

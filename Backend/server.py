@@ -103,5 +103,14 @@ def get_transactions():
         status_data.append({'id': status.id, 'name': status.name})
     return jsonify({'data': output, 'status': status_data})
 
+# @app.route('/delete_transaction/<int:id>', methods=['DELETE'])
+# def delete_transaction(id):
+#     transaction = Transactions.query.get(id)
+#     if not transaction:
+#         return jsonify({'message': 'Transaction not found'}), 404
+#     db.session.delete(transaction)
+#     db.session.commit()
+#     return jsonify({'message': 'Transaction deleted successfully'})
+
 if __name__ == '__main__':
     app.run(debug=True)

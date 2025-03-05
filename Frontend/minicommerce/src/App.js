@@ -55,12 +55,12 @@ function App() {
     setShowOverlay(true);
   };
 
-  const handleDeleteTransaction = async (id) => {
-    //To be implemented later, currently just a placeholder for the delete function
-    // await deleteTransaction(id);
-    // fetchTransactions();
-    alert("Delete function is not implemented yet");
-  };
+  // const handleDeleteTransaction = async (id) => {
+  //   To be implemented later, currently just a placeholder for the delete function
+  //    await deleteTransaction(id);
+  //    fetchTransactions();
+  //   alert("Delete function is not implemented yet");
+  // };
 
   const handleCloseOverlay = () => {
     setShowOverlay(false);
@@ -155,8 +155,8 @@ function App() {
               </button>
             ))}
           </div>
+          <h2>Transaction List</h2>
           <table>
-            <caption>Transaction List</caption>
             <thead>
               <tr>
                 <th onClick={() => handleSort("id")}>ID</th>
@@ -203,12 +203,12 @@ function App() {
                     >
                       Edit
                     </button>
-                    <button
+                    {/* <button
                       className="Delete-button"
                       onClick={() => handleDeleteTransaction(item.id)}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}
